@@ -53,7 +53,7 @@ def as_conversation(instruction, response, system=None):
         "text": None,
         "chosen": None,
         "rejected": None,
-        "prommpt": None,
+        "prompt": None,
         "conversations": [
             {
                 "from": "human",

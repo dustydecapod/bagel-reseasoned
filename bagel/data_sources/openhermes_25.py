@@ -33,7 +33,7 @@ def load_data(known_uids=set([]), **_):
             del item["conversations"][1]
         elif item["conversations"][0]["from"] == "gpt":
             continue
-        keep.append({"id": i, "conversations": item["conversations"]})
+        keep.append({"id": "openhermes-2.5:%i" % i, "conversations": [{"from":x['from'], "value": x['value']} for x in item["conversations"]]})
         i += 1
     return Dataset.from_list(keep)
 
