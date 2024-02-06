@@ -9,15 +9,13 @@ PRIORITY = 1
 
 
 def load_data(known_uids=set([]), **_):
-    """Pippa dataset, filtered."""
-    logger.info("Loading PIPPA dataset...")
-    raw_data = [
-        json.loads(line)
-        for line in requests.get(
-            "https://huggingface.co/datasets/kingbri/PIPPA-shareGPT/resolve/main/pippa_sharegpt_trimmed.jsonl?download=true"
-        ).text.splitlines()
-    ]
+    """OpenHermes-2.5"""
+    logger.info("Loading OpenHermes-2.5 dataset...")
+    raw_data = json.loads(requests.get(
+            "https://huggingface.co/datasets/teknium/OpenHermes-2.5/resolve/main/openhermes2_5.json?download=true"
+        ).text)
     keep = []
+    i = 0
     for item in raw_data:
         if len(item["conversations"]) < 3:
             continue
@@ -35,7 +33,8 @@ def load_data(known_uids=set([]), **_):
             del item["conversations"][1]
         elif item["conversations"][0]["from"] == "gpt":
             continue
-        keep.append({"id": item["id"], "conversations": item["conversations"]})
+        keep.append({"id": i, "conversations": item["conversations"]})
+        i += 1
     return Dataset.from_list(keep)
 
 

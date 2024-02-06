@@ -9,14 +9,11 @@ PRIORITY = 1
 
 
 def load_data(known_uids=set([]), **_):
-    """Pippa dataset, filtered."""
-    logger.info("Loading PIPPA dataset...")
-    raw_data = [
-        json.loads(line)
-        for line in requests.get(
-            "https://huggingface.co/datasets/kingbri/PIPPA-shareGPT/resolve/main/pippa_sharegpt_trimmed.jsonl?download=true"
-        ).text.splitlines()
-    ]
+    """Samantha dataset, filtered."""
+    logger.info("Loading Samantha dataset...")
+    raw_data = json.loads(requests.get(
+            "https://huggingface.co/datasets/cognitivecomputations/samantha-data/resolve/main/samantha-1.1.json?download=true"
+        ).text)
     keep = []
     for item in raw_data:
         if len(item["conversations"]) < 3:

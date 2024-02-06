@@ -19,9 +19,11 @@ from . import capybara
 from . import cinematika
 from . import comedy_snippets
 from . import contextual_dpo
+from . import dolphin_coder
 from . import emobank
 from . import evol_instruct
 from . import glaive_func
+from . import grammarly_coedit
 from . import gutenberg_dpo
 from . import helpsteer
 from . import limarp
@@ -29,6 +31,8 @@ from . import lmsys_chat_1m
 from . import mathinstruct
 from . import natural_instructions
 from . import openbookqa
+from . import openhermes_25
+from . import open_platypus
 from . import orca_dpo_pairs
 from . import pippa
 from . import piqa
@@ -36,6 +40,7 @@ from . import pydpo
 from . import python_alpaca
 from . import ropes
 from . import rosetta_code
+from . import samantha
 from . import slimorca
 from . import sql
 from . import squad_v2
@@ -45,7 +50,7 @@ from . import toxic
 from . import truthy
 from . import ultrafeedback
 from . import whiterabbitneo
-
+from . import writingprompts_curated
 
 def decontaminate(dataset):
     """Decontaminate the dataset."""
